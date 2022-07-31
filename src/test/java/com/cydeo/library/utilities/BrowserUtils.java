@@ -14,100 +14,6 @@ import java.util.Set;
 
 public class BrowserUtils {
 
-
-//    TC : Create utility method
-//   1. Create a new class called BrowserUtils
-//   2. Create a method to make Multiple Windows logic re-usable 3. When method is called, it should switch window and verify
-//    title.
-
-//    Method info:
-//   • Name: switchWindowAndVerify
-//   • Return type: void
-//   • Arg1: WebDriver
-//   • Arg2: String expectedInUrl
-//   • Arg3: String expectedTitle
-
-    public static void switchWindowAndVerify(String expectedInUrl,String expectedTitle){
-
-        Set<String> allWindowHandles = Driver.getDriver().getWindowHandles();
-
-        for (String eachWindow : allWindowHandles) {
-            // driver.switchTo().window(eachWindow); syntax will switch each windows and driver will be able to see each window
-            Driver.getDriver().switchTo().window(eachWindow);
-          //  System.out.println("driver.getCurrentUrl() = " + driver.getCurrentUrl());
-
-            if(Driver.getDriver().getCurrentUrl().contains(expectedInUrl)){
-                break;
-            }
-        }
-
-//        5. Assert:Title contains “Etsy”
-        String actualTitle = Driver.getDriver().getTitle();
-
-        Assert.assertTrue("Title verification failed!",actualTitle.contains(expectedTitle));
-    }
-
-
-     public static void verifyTitle(WebDriver driver,String expectedTitle){
-
-        Assert.assertEquals(driver.getTitle(),expectedTitle);
-
-     }
-
-
-     public static void waitForInvisibilityOf(WebElement element){
-
-         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
-         wait.until(ExpectedConditions.invisibilityOf(element));
-
-     }
-
-
-    public static void verifyURLContains(String expectedInURL){
-        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInURL));
-    }
-
-
-    /**
-     * This method will accept a dropdown as a WebElement
-     * and return all the options' text in a List of String.
-     * @param dropdownElement
-     * @return List<String> actualOptionsAsString
-     */
-    public static List<String> dropdownOptionsAsString(WebElement dropdownElement){
-        Select select = new Select(dropdownElement);
-
-        //List of all ACTUAL month <options> as a web element
-        List<WebElement> actualOptionsAsWebElement = select.getOptions();
-
-        //List of all ACTUAL month <options> as a string
-        List<String> actualOptionsAsString= new ArrayList<>();
-
-        for (WebElement each : actualOptionsAsWebElement) {
-            actualOptionsAsString.add(each.getText());
-        }
-
-        return  actualOptionsAsString;
-
-    }
-
-
-    /**
-     * This method will accept a group radio buttons as a List of WebElement.
-     * It will loop through the List, and click to the radio button with provided attributeValue
-     * @param radioButtons
-     * @param attributeValue
-     */
-    public static void clickRadioButton(List<WebElement> radioButtons, String attributeValue){
-
-        for (WebElement each : radioButtons) {
-
-            if (each.getAttribute("value").equalsIgnoreCase(attributeValue)){
-                each.click();
-            }
-        }
-    }
-
     /**
      * Switches to new window by the exact title. Returns to original window if target title not found
      * @param targetTitle
@@ -469,6 +375,16 @@ public class BrowserUtils {
     public static void waitForPresenceOfElement(By by, long time) {
         new WebDriverWait(Driver.getDriver(), time).until(ExpectedConditions.presenceOfElementLocated(by));
     }
+
+
+
+    public static List<String> getAllSelectOptions(WebElement element){
+
+        Select select=new Select(element);
+
+        return getElementsText(select.getOptions());
+    }
+
 
 
 }

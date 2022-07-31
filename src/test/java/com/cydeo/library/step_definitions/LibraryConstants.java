@@ -9,5 +9,6 @@ public class LibraryConstants {
     public static final String BOOKS = "books";
     public static final String SIGN_IN = "sign in";
     public static final String LOGIN = "login";
-    public static final int TIME_OUT_FOR_PAGE_LOAD = 20;
+    public static final String FORM = "form";
+    public static final int TIME_OUT_FOR_PAGE_LOAD = 10;
 }

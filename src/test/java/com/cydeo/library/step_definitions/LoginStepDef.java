@@ -1,6 +1,5 @@
 package com.cydeo.library.step_definitions;
 
-import com.cydeo.library.pages.BasePage;
 import com.cydeo.library.pages.LoginPage;
 import com.cydeo.library.utilities.BrowserUtils;
 import com.cydeo.library.utilities.ConfigurationReader;
@@ -11,7 +10,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class UserLoginStepDef {
+public class LoginStepDef {
     LoginPage loginPage = new LoginPage();
 
     @Given("user is on login page")
@@ -31,6 +30,7 @@ public class UserLoginStepDef {
     @And("user click {string} button on {string} page")
     public void userClickButtonOnPage(String button, String page) throws Exception {
         loginPage.clickButton(button, page);
+
     }
 
     @Then("user can see {int} modules on the dashboard page")
