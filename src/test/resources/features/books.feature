@@ -1,5 +1,5 @@
 Feature: user as a librarian should be able to add a new book
-  @library @db @wip
+  @library @db
   Scenario: librarian able to add new user entering all required information
     Given user as a "librarian" is on home page
     When user clicks "Books" module

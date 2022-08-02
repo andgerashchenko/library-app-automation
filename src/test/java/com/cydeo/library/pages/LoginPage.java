@@ -52,5 +52,4 @@ public class LoginPage extends BasePage{
                 throw new Exception("There is no such a "+ userType + " user type");
         }
     }
-
 }
