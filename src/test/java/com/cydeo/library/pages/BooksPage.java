@@ -12,6 +12,7 @@ public class BooksPage extends BasePage{
     public BooksPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
     @FindBy(xpath = "//table/tbody/tr")
     public List<WebElement> allRows;
 
@@ -20,6 +21,9 @@ public class BooksPage extends BasePage{
 
     @FindBy(id = "book_categories")
     public WebElement mainCategoryElement;
+
+    @FindBy(id = "book_group_id")
+    public WebElement formMainCategoryElement;
 
     @FindBy(name = "name")
     public WebElement bookName;
@@ -40,6 +44,8 @@ public class BooksPage extends BasePage{
     @FindBy(partialLinkText = "Add Book")
     public WebElement addBookBtn;
 
+    @FindBy (partialLinkText = "Edit Book")
+    public WebElement editBookBtn;
 
 
     public WebElement editBook(String book) {
