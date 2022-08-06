@@ -1,5 +1,5 @@
 Feature: As a data consumer, I want UI and DB book information are match.
-@db @wip
+@db
   Scenario: Verify book information with DB
     Given user as a "librarian" is on home page
     And user clicks "Books" module

@@ -8,8 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class BooksPage extends BasePage{
-    public BooksPage(){
+public class BooksPage extends BasePage {
+    public BooksPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -44,8 +44,20 @@ public class BooksPage extends BasePage{
     @FindBy(partialLinkText = "Add Book")
     public WebElement addBookBtn;
 
-    @FindBy (partialLinkText = "Edit Book")
+    @FindBy(partialLinkText = "Edit Book")
     public WebElement editBookBtn;
+
+    @FindBy(partialLinkText = "Borrow Book")
+    public WebElement borrowBookBtn;
+
+    @FindBy(xpath = "//tr//td[2]")
+    public List<WebElement> allBookNames;
+
+    @FindBy(partialLinkText = "Return Book")
+    List<WebElement> allReturnBtn;
+    public void returnLastBook() {
+        allReturnBtn.get(allReturnBtn.size()-1).click();
+    }
 
 
     public WebElement editBook(String book) {
